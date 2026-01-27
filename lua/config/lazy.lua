@@ -1,6 +1,10 @@
+-- install lazy.nvim plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- vim.print("lazypath", lazypath)       -- "~/.local/share/LazyVim/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  -- installing lazy.nvim ....
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  -- installing ...
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
@@ -12,8 +16,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
+-- add lazy to runtime path
 vim.opt.rtp:prepend(lazypath)
 
+-- lazy configuration
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
