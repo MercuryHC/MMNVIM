@@ -2,10 +2,9 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "catppuccin-mocha",
     },
   },
 
   { "folke/neodev.nvim", opts = {} },
 }
-
