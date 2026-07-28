@@ -22,3 +22,16 @@ opt.breakindent = true -- 启用断行缩进
 opt.linebreak = true --启用行内断行(在单词边界换行)
 
 -- lsp
+
+-- 获取系统类型
+-- 若是macOS，配置个人设置
+-- 若是Linux，配置工作设置
+-- 示例为AutoFormat
+local sysname = vim.loop.os_uname().sysname
+if sysname == "Darwin" then
+  -- macOS: 个人设置
+  g.autoformat = true -- 启用自动格式化
+elseif sysname == "Linux" then
+  -- Linux: 工作设置
+  g.autoformat = false -- 关闭自动格式化
+end
