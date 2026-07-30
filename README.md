@@ -1,3 +1,9 @@
+<!--toc:start-->
+- [💤 LazyVim](#💤-lazyvim)
+- [Plugins](#plugins)
+- [Shortcut key](#shortcut-key)
+<!--toc:end-->
+
 # 💤 LazyVim
 
 A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
@@ -5,7 +11,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 
 # Plugins
 
-I. LazyVim inline plugins
+1. LazyVim inline plugins
 
 - blink.cmp 13.17ms  CmdlineEnter
 - bufferline.nvim 4.75ms  VeryLazy
@@ -36,6 +42,16 @@ I. LazyVim inline plugins
 - ts-comments.nvim 0.6ms  VeryLazy
 - which-key.nvim 1.24ms  VeryLazy
 
-II. User plugins
+1. User plugins
 
 - cutppuccin.nvim
+-
+
+# Shortcut key
+
+| 说明 | 模式 | 快捷键 | 备注 |
+|------|------|--------|------|
+| 函数注释 | N | <leader>cn | Neogen |
+| 禅模式 | N | <leader>uz | snacks.zen() |
+| 函数局部高亮 | N | <leader>ud | snacks.dim() |
+
