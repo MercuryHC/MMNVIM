@@ -6,7 +6,7 @@ return {
     -- 可选：配置 blame 信息的显示样式，例如位置和延时
     current_line_blame_opts = {
       virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'  -- 显示位置
-      delay = 100, -- 延迟100ms后显示
+      delay = 100,           -- 延迟100ms后显示
     },
   },
 }
