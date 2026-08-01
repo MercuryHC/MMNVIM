@@ -35,3 +35,58 @@ elseif sysname == "Linux" then
   -- Linux: 工作设置
   g.autoformat = false -- 关闭自动格式化
 end
+
+-- clipboard
+-- ============================================================
+-- OSC52 剪贴板配置（适用于所有 Neovim 版本）
+-- ============================================================
+
+-- 检查是否已有 clipboard 配置，如果没有则创建
+if not vim.g.clipboard then
+    vim.g.clipboard = {}
+end
+
+-- 手动实现 OSC52 复制
+local function osc52_copy(text)
+    -- 使用 base64 编码
+    local encoded = vim.fn.system({ "base64", "-w", "0" }, text):gsub("\n", "")
+    -- 发送 OSC52 序列到终端
+    io.write(string.format("\x1b]52;c;%s\x1b\\", encoded))
+    io.flush()
+    -- 返回 true 表示复制成功
+    return true
+end
+
+-- 配置剪贴板
+vim.g.clipboard = {
+    name = "osc52_custom",
+    copy = {
+        ["+"] = function(lines)
+            return osc52_copy(table.concat(lines, "\n"))
+        end,
+        ["*"] = function(lines)
+            return osc52_copy(table.concat(lines, "\n"))
+        end,
+    },
+    paste = {
+        ["+"] = function()
+            -- OSC52 不支持从系统剪贴板读取，返回空
+            return {}
+        end,
+        ["*"] = function()
+            return {}
+        end,
+    },
+}
+
+-- 启用系统剪贴板
+vim.opt.clipboard = "unnamedplus"
+
+-- 可选：复制时显示提示信息
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        if vim.v.event.operator == "y" and vim.v.event.regname == "+" then
+            vim.notify("Copied to system clipboard via OSC52", vim.log.levels.INFO, { title = "Clipboard" })
+        end
+    end,
+})

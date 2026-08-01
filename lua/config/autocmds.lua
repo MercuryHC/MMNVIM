@@ -12,20 +12,24 @@
 -- 1. 禁用拼写检查
 -- 2. 禁用 LSP 诊断信息显示
 -- 3. 执行 RenderMarkdown disable 命令，修复中文表格
-vim.api.nvim_create_augroup("makrkdown_setting", {clear = true})
+-- 4. 关闭miniMap
+vim.api.nvim_create_augroup("markdown_setting", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "makrdown",
-  group = "makrkdown_setting",
-  callback = function ()
+  pattern = "markdown",
+  group = "markdown_setting",
+  callback = function()
     -- 1. 禁用拼写检查
     vim.opt_local.spell = false
 
     -- 2. 禁用 LSP 诊断信息显示
-    -- 可以使用 tiny_inline_diagnostic 插件进行代替，隐藏具体的 diagnostic 信息
-    -- vim.diagnostic.enable(false)
+    -- 可以使用 tiny_inline_diagnostic 插件进行代替，隐藏具体的diagnostic信息
+    vim.diagnostic.enable(false)
 
     -- 3. 执行 RenderMarkdown disable 命令
-    vim.cmd("RenderMarkdown disable")
-  end
+    -- vim.cmd("RenderMarkdown disable")
+    
+    -- 4. 关闭miniMap
+    vim.cmd("Neominimap BufDisable")
+  end,
 })
