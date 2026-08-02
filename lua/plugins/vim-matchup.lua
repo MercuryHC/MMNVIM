@@ -8,9 +8,13 @@ return {
       "andymass/vim-matchup" -- 增强的括号匹配插件
     },
     opts = function(_, opts)
-      -- 启用 matchup 扩展
-      opts.ensure_installed = opts.ensure_installed or {}
-      table.insert(opts.ensure_installed, "matchup")
+      -- 启用 matchup 扩展（"matchup" 不是 parser 名，
+      -- 不能加进 ensure_installed，否则会触发
+      -- "skipping unsupported language: matchup" 警告）
+      opts.matchup = vim.tbl_deep_extend("keep", opts.matchup or {}, {
+        enable = true,             -- 启用 treesitter matchup
+        include_match_words = true,
+      })
       return opts
     end,
   },
