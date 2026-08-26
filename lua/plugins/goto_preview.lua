@@ -3,7 +3,7 @@ return {
   opts = {
     -- 自定义浮窗大小和边框，可根据喜好调整[citation:6]
     width = 80,
-    height = 12,
+    height = 16,
     border = {"⇱", "─", "╮", "│", "╯", "─", "╰", "│"},
     -- 设置为 true 可以使用插件自带的快捷键
     default_mappings = true,

@@ -1,5 +1,5 @@
 <!--toc:start-->
-- [💤 LazyVim](#💤-lazyvim)
+- [💤 LazyVim](#-lazyvim)
 - [Plugins](#plugins)
 - [Shortcut key](#shortcut-key)
 <!--toc:end-->
@@ -54,4 +54,4 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 | 函数注释 | N | <leader>cn | Neogen |
 | 禅模式 | N | <leader>uz | snacks.zen() |
 | 函数局部高亮 | N | <leader>ud | snacks.dim() |
-
+| 启用换行 | N | <leader>uw | snacks.warp() |
